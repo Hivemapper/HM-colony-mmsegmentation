@@ -117,3 +117,5 @@ work_dirs/
 *.pth
 
 worksheet*
+demo/MMSegmentation_Tutorial.ipynb
+

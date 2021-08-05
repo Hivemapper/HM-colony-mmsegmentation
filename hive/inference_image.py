@@ -160,10 +160,11 @@ def main() -> None:
           element = output[iy][ix]
           min_val = np.min(element)
           max_val = np.max(element)
-          range_vals = max_val - min_val
           element = np.subtract(element, min_val)
-          # Note this will be slightly off due to rounding when switched to uint8, but we don't need to be strict
-          output[iy][ix] = np.multiply(element, 255/range_vals)
+          range_vals = max_val - min_val
+          if range_vals > 0.01:
+            # Note this will be slightly off due to rounding when switched to uint8, but we don't need to be strict
+            output[iy][ix] = np.multiply(element, 255/range_vals)
 
       # Add rgb layers and an empty zero-valued shadow layer for compatibility and make 8-bit for saving as image
       shadow_layer = np.zeros((output.shape[0], output.shape[1])).reshape((output.shape[0], output.shape[1], 1))
