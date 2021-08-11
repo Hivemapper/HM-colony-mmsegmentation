@@ -60,4 +60,4 @@ optimizer = dict(
 
 #num_gpus: 1 -> 
 #batch_size: 4
-data = dict(samples_per_gpu=2)
+data = dict(samples_per_gpu=1)
