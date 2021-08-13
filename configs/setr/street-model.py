@@ -1,0 +1,1 @@
+setr_pup_512x512_20k_b16_hm.py
