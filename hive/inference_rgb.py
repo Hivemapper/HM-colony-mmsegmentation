@@ -17,15 +17,22 @@ os.environ['CUDA_HOME'] = '/usr/local/cuda/lib64/'
 #sys.stdout = open('/tmp/inference-file.log', 'w')
 
 # Where the model info is
-base_directory = "/home/david/git/mmsegmentation"
+base_directory = os.path.expanduser("~/git/mmsegmentation")
 model_type = "setr"
+# model_name = "drone-model"
+# model_name = "street-model"
 model_name = "setr_pup_512x512_160k_b16_hm"
 checkpoint = "latest.pth"
 
 # Where to get and save output
 # input_image_directory = "../data/hm/images/test"
+# input_image_directory = os.path.expanduser("~/dashcam-test_model-60c6e4df6cf3c8059f329164-video-60c6d3701a43b372fac0ce4e/texturing_frames")
+# input_image_directory = os.path.expanduser("~/dashcam-test_model-60681598616c5f4f14e4dd31/texturing_frames")
+# input_image_directory = os.path.expanduser("~/dashcam-test_model-611458dfda844835beb2faad/texturing_frames")
 input_image_directory = "demo"
-save_images = False
+
+# Either save or display
+save_images = True
 opacity = 0.5
 output_image_directory = "output"
 if not os.path.exists(input_image_directory):
@@ -70,7 +77,7 @@ count = 0
 for filename in os.listdir(input_image_directory):
   if fnmatch.fnmatch(filename, '*.jpg') or fnmatch.fnmatch(filename, '*.png'):
     count += 1
-    print("Image", count, "of", len(os.listdir()), "named", filename)
+    print("Image", count, "of", len(os.listdir(input_image_directory)), "named", filename)
 
     # result = model.inference_i  (image, [image_meta], rescale=True)
     img = mmcv.imread(os.path.join(input_image_directory, filename))

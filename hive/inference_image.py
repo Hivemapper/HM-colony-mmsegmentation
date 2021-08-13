@@ -43,6 +43,7 @@ def main() -> None:
   po.add_option('-s', '--scale', dest='image_scale', default=100.0, help=f'Scale output image percentage--default=100.0')
   po.add_option('-t', '--type', dest='model_type', default='setr', help=f'Model type--default=setr')
   po.add_option('-m', '--model', dest='model_name', default='setr_pup_512x512_160k_b16_hm', help=f'The model name to run--default=setr_pup_512x512_160k_b16_hm')
+  po.add_option('-c', '--checkpoint', dest='checkpoint', default='latest.pth', help=f'Model checkpoint--default=latest.pth')
   po.add_option('-d', '--root_dir', dest='base_directory_name', default='/usr/etc/hive/segmentation/', help=f'The root directory to find configs--default=/usr/etc/hive/segmentation/')
   po.add_option('-p', '--do-probs', dest='do_probs', default=False, help=f'Output probability fractions--default=False')
   po.add_option('-a', '--graph', dest='graph', help=f'Depricated')
@@ -84,12 +85,12 @@ def main() -> None:
   base_directory = opts.base_directory_name
   config_file = os.path.join(base_directory, 'configs', opts.model_type, opts.model_name + '.py')
   if not os.path.exists(config_file):
-    print("Invalid model config file", config_file)
+    print("Invalid model type or model name in config file name", config_file)
     po.print_help()
     sys.exit(1)
-  checkpoint_file = os.path.join(base_directory, 'work_dirs', opts.model_name, 'latest.pth')
+  checkpoint_file = os.path.join(base_directory, 'work_dirs', opts.model_name, opts.checkpoint)
   if not os.path.exists(checkpoint_file):
-    print("Invalid model checkpoint file", checkpoint_file)
+    print("Invalid model name and/or checkpoint location", checkpoint_file)
     po.print_help()
     sys.exit(1)
 
