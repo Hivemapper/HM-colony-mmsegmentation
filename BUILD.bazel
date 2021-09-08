@@ -1,1 +1,13 @@
-# Empty build file.
+filegroup(
+  name = "configs",
+  data = glob(["configs/**/*.py"]),
+  visibility = ["//visibility:public"],
+)
+
+filegroup(
+  name = "hive",
+  srcs = [
+    "hive/inference_image.py",
+  ],
+  visibility = ["//visibility:public"],
+)
