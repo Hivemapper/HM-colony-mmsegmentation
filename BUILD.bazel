@@ -11,3 +11,10 @@ filegroup(
   ],
   visibility = ["//visibility:public"],
 )
+
+exports_files(
+  [
+    "hive/inference_image.py",
+  ],
+  visibility = ["//visibility:public"],
+)
