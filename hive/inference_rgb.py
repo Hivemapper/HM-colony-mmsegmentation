@@ -21,15 +21,16 @@ base_directory = os.path.expanduser("~/git/mmsegmentation")
 model_type = "setr"
 # model_name = "drone-model"
 # model_name = "street-model"
-model_name = "setr_pup_512x512_160k_b16_hm"
+# model_name = "setr_pup_512x512_160k_b16_hm"
+model_name = "setr_pup_512x512_160k_b16_a2d2"
 checkpoint = "latest.pth"
 
 # Where to get and save output
 # input_image_directory = "../data/hm/images/test"
-# input_image_directory = os.path.expanduser("~/dashcam-test_model-60c6e4df6cf3c8059f329164-video-60c6d3701a43b372fac0ce4e/texturing_frames")
+input_image_directory = os.path.expanduser("~/dashcam-test_model-60c6e4df6cf3c8059f329164-video-60c6d3701a43b372fac0ce4e/texturing_frames")
 # input_image_directory = os.path.expanduser("~/dashcam-test_model-60681598616c5f4f14e4dd31/texturing_frames")
 # input_image_directory = os.path.expanduser("~/dashcam-test_model-611458dfda844835beb2faad/texturing_frames")
-input_image_directory = "demo"
+# input_image_directory = "demo"
 
 # Either save or display
 save_images = True
